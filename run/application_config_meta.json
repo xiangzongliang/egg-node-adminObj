@@ -1,0 +1,299 @@
+{
+  "keys": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+  "middleware": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+  "cluster": {
+    "listen": {
+      "port": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+      "path": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "hostname": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    }
+  },
+  "mysql": {
+    "client": {
+      "host": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+      "port": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+      "user": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+      "password": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+      "database": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js"
+    },
+    "app": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "agent": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "default": {
+      "database": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-mysql/config/config.default.js",
+      "connectionLimit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-mysql/config/config.default.js"
+    }
+  },
+  "static": {
+    "prefix": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "dir": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "dynamic": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "preload": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "buffer": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "maxFiles": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js"
+  },
+  "view": {
+    "defaultViewEngine": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js",
+    "mapping": {
+      ".html": "/Users/xiangliang/Documents/www/nodeEGG/config/config.default.js"
+    },
+    "root": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view/config/config.default.js",
+    "cache": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view/config/config.local.js",
+    "defaultExtension": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view/config/config.default.js"
+  },
+  "session": {
+    "maxAge": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-session/config/config.default.js",
+    "key": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-session/config/config.default.js",
+    "httpOnly": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-session/config/config.default.js",
+    "encrypt": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-session/config/config.default.js"
+  },
+  "security": {
+    "domainWhiteList": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+    "protocolWhiteList": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+    "defaultMiddleware": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+    "csrf": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "useSession": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "ignoreJSON": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "cookieName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "sessionName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "headerName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "bodyName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "queryName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "xframe": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "hsts": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.local.js",
+      "maxAge": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "includeSubdomains": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "dta": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "methodnoallow": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "noopen": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "nosniff": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "referrerPolicy": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "xssProtection": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "value": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "csp": {
+      "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "policy": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    },
+    "ssrf": {
+      "ipBlackList": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js",
+      "checkAddress": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+    }
+  },
+  "helper": {
+    "shtml": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-security/config/config.default.js"
+  },
+  "jsonp": {
+    "limit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-jsonp/config/config.default.js",
+    "callback": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-jsonp/config/config.default.js",
+    "csrf": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-jsonp/config/config.default.js"
+  },
+  "onerror": {
+    "errorPageUrl": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-onerror/config/config.default.js",
+    "appErrorFilter": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-onerror/config/config.default.js"
+  },
+  "i18n": {
+    "defaultLocale": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-i18n/config/config.default.js",
+    "dirs": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-i18n/config/config.default.js",
+    "queryField": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-i18n/config/config.default.js",
+    "cookieField": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-i18n/config/config.default.js",
+    "cookieMaxAge": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-i18n/config/config.default.js"
+  },
+  "watcher": {
+    "type": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-watcher/config/config.local.js",
+    "eventSources": {
+      "default": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-watcher/config/config.default.js",
+      "development": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-watcher/config/config.default.js"
+    }
+  },
+  "multipart": {
+    "autoFields": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "defaultCharset": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "fieldNameSize": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "fieldSize": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "fields": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "fileSize": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "files": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "fileExtensions": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js",
+    "whitelist": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-multipart/config/config.default.js"
+  },
+  "development": {
+    "watchDirs": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-development/config/config.default.js",
+    "ignoreDirs": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-development/config/config.default.js",
+    "fastReady": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-development/config/config.default.js",
+    "reloadOnDebug": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-development/config/config.default.js",
+    "overrideDefault": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-development/config/config.default.js"
+  },
+  "customLogger": {
+    "scheduleLogger": {
+      "consoleLevel": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-schedule/config/config.default.js",
+      "file": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-schedule/config/config.default.js"
+    }
+  },
+  "logrotator": {
+    "filesRotateByHour": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "hourDelimiter": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "filesRotateBySize": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "maxFileSize": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "maxFiles": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "rotateDuration": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js",
+    "maxDays": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-logrotator/config/config.default.js"
+  },
+  "nunjucks": {
+    "autoescape": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view-nunjucks/config/config.default.js",
+    "throwOnUndefined": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view-nunjucks/config/config.default.js",
+    "trimBlocks": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view-nunjucks/config/config.default.js",
+    "lstripBlocks": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view-nunjucks/config/config.default.js",
+    "cache": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg-view-nunjucks/config/config.local.js"
+  },
+  "env": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "name": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "proxy": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "protocolHeaders": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "ipHeaders": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "hostHeaders": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "pkg": {
+    "name": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "version": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "description": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "private": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "dependencies": {
+      "egg": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-mysql": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-scripts": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-static": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-view-assets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-view-nunjucks": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "devDependencies": {
+      "autod": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "autod-egg": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-bin": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-ci": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "egg-mock": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "eslint": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "eslint-config-egg": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "webstorm-disable-index": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "engines": {
+      "node": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "scripts": {
+      "start": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "stop": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "dev": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "debug": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "test": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "test-local": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "cov": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "lint": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "ci": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "autod": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "ci": {
+      "version": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "repository": {
+      "type": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "url": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "author": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "license": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "baseDir": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "HOME": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "rundir": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "dump": {
+    "ignore": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "confusedConfigurations": {
+    "bodyparser": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "notFound": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "sitefile": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "middlewares": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "httpClient": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "notfound": {
+    "pageUrl": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "siteFile": {
+    "/favicon.ico": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "bodyParser": {
+    "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "formLimit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "jsonLimit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "strict": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "queryString": {
+      "arrayLimit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "depth": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "parameterLimit": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    }
+  },
+  "logger": {
+    "dir": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "encoding": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "env": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "level": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "consoleLevel": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "disableConsoleAfterReady": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "outputJSON": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "buffer": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "appLogName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "coreLogName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "agentLogName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "errorLogName": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "coreLogger": {
+      "consoleLevel": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.local.js"
+    },
+    "allowDebugAtProd": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "httpclient": {
+    "enableDNSCache": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxLength": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "dnsCacheMaxAge": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "request": {
+      "timeout": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "httpAgent": {
+      "keepAlive": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    },
+    "httpsAgent": {
+      "keepAlive": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "freeSocketKeepAliveTimeout": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "maxSockets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "maxFreeSockets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+    }
+  },
+  "meta": {
+    "enable": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+    "logging": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  },
+  "coreMiddleware": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "workerStartTimeout": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+  "clusterClient": {
+    "responseTimeout": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+  }
+}

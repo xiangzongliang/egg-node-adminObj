@@ -1,0 +1,14 @@
+.page{
+    display: flex;
+    justify-content: center;
+    flex-flow: column wrap;
+}
+.login-box{
+    width: 400px;
+    height: auto;
+    margin-left: calc(50% - 200px);
+    border-radius: 3px;
+    box-shadow: 0px 0px 8px #c4c4c4;
+    box-sizing: border-box;
+    padding: 80px 50px;
+}
