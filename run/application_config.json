@@ -210,7 +210,8 @@
         "egg-scripts": "^2.5.0",
         "egg-static": "^2.1.0",
         "egg-view-assets": "^1.1.0",
-        "egg-view-nunjucks": "^2.2.0"
+        "egg-view-nunjucks": "^2.2.0",
+        "md5": "^2.2.1"
       },
       "devDependencies": {
         "autod": "^3.0.1",

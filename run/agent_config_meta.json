@@ -181,7 +181,8 @@
       "egg-scripts": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
       "egg-static": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
       "egg-view-assets": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
-      "egg-view-nunjucks": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
+      "egg-view-nunjucks": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",
+      "md5": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js"
     },
     "devDependencies": {
       "autod": "/Users/xiangliang/Documents/www/nodeEGG/node_modules/egg/config/config.default.js",

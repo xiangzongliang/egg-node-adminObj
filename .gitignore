@@ -58,5 +58,6 @@ typings/
 .env
 
 .idea
-
+run
+run/
 

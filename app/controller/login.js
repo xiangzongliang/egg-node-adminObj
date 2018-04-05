@@ -1,5 +1,7 @@
 const Controller = require('egg').Controller;
 
+
+
 class NewsController extends Controller {
 	async login() {
 		const dataList = {
@@ -13,10 +15,19 @@ class NewsController extends Controller {
 
 
 	async userLogin() {
-		let sqliantoo = await this.app.mysql.select('iantoo_nav');
-		this.ctx.body = sqliantoo;
-		console.log('接受了请求')
-
+		let postData = this.ctx.request.body;
+		const queryUser = await this.ctx.service.islogin.login(postData);
+		if(queryUser.length == 0){
+			this.ctx.body = {
+				status:false,
+				msg:'用户名或密码不正确'
+			};
+		}else{
+			this.ctx.body = {
+				status:true,
+				msg:'登陆成功'
+			};
+		}
 	}
 }
 

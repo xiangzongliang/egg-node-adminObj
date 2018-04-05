@@ -1,5 +1,6 @@
-layui.use(['element','jquery'], function(element,$){
+layui.use(['element','jquery','layer'], function(element,$){
 	var element = layui.element,
+		layer = layui.layer,
 
 
 
@@ -9,13 +10,25 @@ layui.use(['element','jquery'], function(element,$){
 			},
 			listen:function () {
 				$('.login-btn').click(function () {
+					var postData = {
+						userName:$('.userName').val(),
+						password:$('.password').val()
+					}
+
+					if(postData.userName == ''){
+						layer.msg('用户名不能为空');
+						return;
+					}else if(postData.password == ''){
+						layer.msg('密码不能为空');
+						return;
+					}
 					$.ajax({
 						url:'/login',
 						type:'POST',
 						headers: {
-							'x-csrf-token':'pWQXfRfZI0qXHHLdCg38j81l'
+							'x-csrf-token':iantoo.getCookie()
 						},
-						data:{name:'dsdasd',psd:'123456'},
+						data:postData,
 						dataType:'json',
 						success:function (data) {
 							console.log(data);
