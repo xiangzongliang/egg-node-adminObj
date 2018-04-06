@@ -3,17 +3,17 @@
 const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
-  async home() {
+	  async home() {
 
-      let uid = this.ctx.session.uid
+	      let uid = this.ctx.session.uid
 
-	  let SQLData = await this.app.mysql.select('iantoo_seting',{
-	    where:{
-	      uid:uid
-        }
-      });
-      await this.ctx.render('index/index.html');
-  }
+		  let querySeting = await this.ctx.service.home.querySeting(uid);
+
+		  querySeting[0].title = '基础配置'
+
+
+	      await this.ctx.render('home/home.html',querySeting[0]);
+	  }
 }
 
 module.exports = HomeController;

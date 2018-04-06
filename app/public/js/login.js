@@ -33,6 +33,8 @@ layui.use(['element','jquery','layer'], function(element,$){
 						success:function (data) {
 							if(data.status == true){
 								window.location.href='/';
+							}else{
+								layer.msg(data.msg);
 							}
 						}
 					})

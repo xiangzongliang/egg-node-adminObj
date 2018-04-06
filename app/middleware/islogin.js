@@ -2,13 +2,17 @@ module.exports = options => {
 
 	return async function islogin(ctx, next) {
 		await next();
+		let adminSession = ctx.session,
+			loginTime = adminSession.loginTime,
+			timestamp=new Date(),
+			getTime = timestamp.getTime();
 		if(ctx.request.url == '/login'){
-			// 不做处理
+			// 如果已经登陆了在访问登陆页面也跳转到首页
+			if(ctx.request.method == 'GET' && ctx.session.loginTime!=undefined && loginTime + 3600000 > getTime) {
+				ctx.redirect('/');
+			}
+
 		}else{
-			let adminSession = ctx.session,
-				loginTime = adminSession.loginTime,
-				timestamp=new Date(),
-				getTime = timestamp.getTime();
 			if(loginTime + 3600000 < getTime || !ctx.session.loginTime || ctx.session.loginTime == undefined){
 				ctx.session = null //清除缓存并重定向
 
@@ -20,6 +24,8 @@ module.exports = options => {
 						msg:'您没有权限直接访问接口'
 					}
 				}
+			}else{
+
 			}
 		}
 	};

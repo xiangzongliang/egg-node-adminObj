@@ -17,7 +17,6 @@ class NewsController extends Controller {
 	async userLogin() {
 		let postData = this.ctx.request.body;
 		const queryUser = await this.ctx.service.islogin.login(postData);
-		console.log(queryUser[0].username)
 		if(queryUser.length == 0){
 			this.ctx.body = {
 				status:false,

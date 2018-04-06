@@ -5,19 +5,76 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %} iantoo admin {% endblock %}</title>
+    <title>{% block title %} iantoo 管理系统 {% endblock %}</title>
     <link rel="stylesheet" href="/public/css/common.css"/>
     <link rel="stylesheet" href="/public/css/login.css"/>
     <link rel="stylesheet" href="/public/layui/css/layui.css"/>
     <script src="/public/layui/layui.js"></script>
     <script src="/public/js/common.js"></script>
 </head>
-<body>
+<body class="layui-layout-body">
 
 <!--导航模块-->
-{% block header %}
-    <div>header</div>
-{% endblock %}
+
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">IANTOO 后台管理</div>
+        <ul class="layui-nav layui-layout-left">
+            <li class="layui-nav-item"><a href="/">基础设置</a></li>
+            <li class="layui-nav-item">
+                <a href="">博客文章</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="/addblog">添加文章</a></dd>
+                    <dd><a href="">文章管理</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">分类管理</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">评论管理</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+                    {% block username %}
+                        脉不语
+                    {% endblock %}
+                </a>
+                <dl class="layui-nav-child">
+                    <dd><a href="">基本资料</a></dd>
+                    <dd><a href="">安全设置</a></dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="">登出</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item">
+                    <a class="" href="javascript:;">所有文章</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;">列表一</a></dd>
+                        <dd><a href="javascript:;">列表二</a></dd>
+                        <dd><a href="javascript:;">列表三</a></dd>
+                        <dd><a href="">超链接</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item"><a href="">云配置</a></li>
+                <li class="layui-nav-item"><a href="">未开发</a></li>
+            </ul>
+        </div>
+    </div>
 
 
 
@@ -25,12 +82,24 @@
 
 
 
-<!--内容模块-->
-{% block content %}
-    This is more content
-{% endblock %}
 
 
+
+    <!--内容模块-->
+    {% block content %}
+        This is more content
+    {% endblock %}
+
+
+    <!--底部模块-->
+    {% block footer %}
+        <div class="layui-footer">
+            © layui.com - 底部固定区域
+        </div>
+    {% endblock %}
+
+
+</div>
 
 </body>
 </html>
