@@ -6,15 +6,16 @@ class HomeController extends Controller {
 
 	//进去首页
 	  async home() {
-
-	      let uid = this.ctx.session.uid
-
-		  let querySeting = await this.ctx.service.home.querySeting(uid);
-	      if(!querySeting){
-		      querySeting = []
-	      }
-		  querySeting[0].title = '基础配置'
-	      await this.ctx.render('home/home.html',querySeting[0]);
+	  	try{
+		    var uid = this.ctx.session.uid
+		    var querySeting = await this.ctx.service.home.querySeting(uid);
+	    }finally {
+		    if(!querySeting){
+			    querySeting = []
+		    }
+		    querySeting[0].title = '基础配置'
+		    await this.ctx.render('home/home.html',querySeting[0]);
+	    }
 	  }
 
 	  //修改阿里云配置

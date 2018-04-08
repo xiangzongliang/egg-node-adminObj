@@ -9,7 +9,7 @@ module.exports = options => {
 		if(ctx.request.url == '/login'){
 			// 如果已经登陆了在访问登陆页面也跳转到首页
 			if(ctx.request.method == 'GET' && ctx.session.loginTime != undefined && loginTime + 10000 > getTime) {
-				ctx.redirect('/home');
+				ctx.redirect('/');
 			}
 
 		}else{
