@@ -38,10 +38,10 @@ module.exports = appInfo => {
 	//——————————数据库连接
 	config.mysql = {
 		client: {
-			host: '192.168.2.124',
+			host: '127.0.0.1',
 			port: '3306',
-			user: 'root',
-			password: '123456',
+			user: 'xiangzongliang',
+			password: 'xiang0612liang327411',
 			database: 'iantoo',
 		},
 		app: true,  // 是否加载到 app 上，默认开启

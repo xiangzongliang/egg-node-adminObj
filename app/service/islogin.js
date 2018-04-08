@@ -2,7 +2,6 @@ const MD5pass = require('md5');
 const Service = require('egg').Service;
 class ISloginServer extends Service {
 	async login(postData) {
-		console.log(postData)
 		let sqliantoo = await this.app.mysql.select('iantoo_user',{
 			where:{
 				username:postData.userName,

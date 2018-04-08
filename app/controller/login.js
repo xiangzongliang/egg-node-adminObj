@@ -33,6 +33,7 @@ class NewsController extends Controller {
 				username:queryUser[0].username,
 				loginTime : getTime
 			};
+
 			this.ctx.body = {
 				status:true,
 				msg:'登陆成功'
