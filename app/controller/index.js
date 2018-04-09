@@ -10,10 +10,11 @@ class HomeController extends Controller {
 		    var uid = this.ctx.session.uid
 		    var querySeting = await this.ctx.service.home.querySeting(uid);
 	    }finally {
-		    if(!querySeting){
-			    querySeting = []
+		    if(querySeting.length == 0){
+			    querySeting = [{
+			    	title:'基础配置'
+			    }]
 		    }
-		    querySeting[0].title = '基础配置'
 		    await this.ctx.render('home/home.html',querySeting[0]);
 	    }
 	  }
@@ -56,6 +57,28 @@ class HomeController extends Controller {
 			  };
 		  }
 	  }
+
+
+
+	  //修改标语
+		async editSlogan(){
+			let sloganVal = this.ctx.request.body;
+			let editSlogan = await this.ctx.service.home.editSlogan(sloganVal);
+
+			if(editSlogan){
+				this.ctx.body = {
+					status:true,
+					msg:'修改成功'
+				};
+			}else{
+				this.ctx.body = {
+					status:false,
+					msg:'修改失败'
+				};
+			}
+
+		}
 }
+
 
 module.exports = HomeController;

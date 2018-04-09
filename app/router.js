@@ -10,6 +10,7 @@ module.exports = app => {
     router.get('/', controller.index.home);
 	router.post('/editAliyunKey', controller.index.editAliyunKey); //修改阿里云的Key
 	router.post('/editQiniuyun', controller.index.editQiniuyun); //修改七牛云的Key
+	router.post('/editslogan', controller.index.editSlogan); //修改标语
 
 
     // 登陆页面

@@ -35,6 +35,19 @@ class home extends Service {
 		return SQLqiniuyun
 
 	}
+
+
+
+	async editSlogan(editslognVal){
+		let SQLeditSlogan= await this.app.mysql.update('iantoo_seting', {
+			slogan:editslognVal.slogan
+		},{
+			where: {
+				uid: 1
+			}
+		})
+		return SQLeditSlogan
+	}
 }
 
 module.exports = home;

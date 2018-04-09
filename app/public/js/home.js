@@ -98,7 +98,28 @@ layui.use(['element','jquery','layer'], function(element,$){
 			
 			//修改标语
 			editSlogan:function () {
-				
+				var sloganVal = {
+					slogan:$('.slogan').val()
+				}
+				if(sloganVal.slogan){
+					layer.confirm('确定要修改标语吗？', function(index){
+						$.ajax({
+							url:'/editslogan',
+							type:'POST',
+							headers: {
+								'x-csrf-token':iantoo.getCookie()
+							},
+							data:sloganVal,
+							dataType:'json',
+							success:function (data) {
+								layer.msg(data.msg);
+							}
+						})
+						layer.close(index);
+					});
+				}else{
+					layer.msg('slogan不能为空')
+				}
 			},
 			
 			
