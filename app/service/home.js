@@ -1,4 +1,5 @@
 const Service = require('egg').Service;
+const MD5pass = require('md5');
 class home extends Service {
 	async querySeting(uid) {
 		let SQLData = await this.app.mysql.select('iantoo_seting',{
@@ -47,6 +48,18 @@ class home extends Service {
 			}
 		})
 		return SQLeditSlogan
+	}
+
+
+	async editPassword(psdVal,uid){
+		let SQLeditPassword= await this.app.mysql.update('iantoo_user', {
+			password:MD5pass(psdVal.password)
+		},{
+			where: {
+				uid: uid
+			}
+		})
+		return SQLeditPassword
 	}
 }
 

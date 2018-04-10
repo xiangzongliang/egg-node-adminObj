@@ -19,6 +19,12 @@ class HomeController extends Controller {
 	    }
 	  }
 
+
+	  // 退出登录
+	  async logout(){
+		  this.ctx.session = null;
+	  }
+
 	  //修改阿里云配置
 	  async editAliyunKey(){
 		  let postData = this.ctx.request.body;
@@ -77,6 +83,26 @@ class HomeController extends Controller {
 				};
 			}
 
+		}
+
+
+		//修改密码
+		async editsPassword(){
+			let passwordVal = this.ctx.request.body;
+			var Puid = this.ctx.session.uid
+			let editPsd = await this.ctx.service.home.editPassword(passwordVal,Puid);
+
+			if(editPsd){
+				this.ctx.body = {
+					status:true,
+					msg:'修改成功'
+				};
+			}else{
+				this.ctx.body = {
+					status:false,
+					msg:'修改失败'
+				};
+			}
 		}
 }
 

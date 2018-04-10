@@ -8,10 +8,11 @@ module.exports = app => {
 
 	// 主页
     router.get('/', controller.index.home);
+	router.get('/logout', controller.index.logout); //退出登录
 	router.post('/editAliyunKey', controller.index.editAliyunKey); //修改阿里云的Key
 	router.post('/editQiniuyun', controller.index.editQiniuyun); //修改七牛云的Key
 	router.post('/editslogan', controller.index.editSlogan); //修改标语
-
+	router.post('/editsPassword', controller.index.editsPassword); //修改密码
 
     // 登陆页面
 	router.get('/login', controller.login.login);

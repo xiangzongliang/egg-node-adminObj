@@ -125,7 +125,28 @@ layui.use(['element','jquery','layer'], function(element,$){
 			
 			//修改密码
 			editPassword:function () {
-
+				var postData = {
+					password:$('.password').val()
+				};
+				if(postData.password && postData.password.length>4){
+					layer.confirm('确定要修改密码吗？', function(index){
+						$.ajax({
+							url:'/editsPassword',
+							type:'POST',
+							headers: {
+								'x-csrf-token':iantoo.getCookie()
+							},
+							data:postData,
+							dataType:'json',
+							success:function (data) {
+								layer.msg(data.msg);
+							}
+						})
+						layer.close(index);
+					});
+				}else{
+					layer.msg('新密码不能少于四位！')
+				}
 			}
 		};
 
