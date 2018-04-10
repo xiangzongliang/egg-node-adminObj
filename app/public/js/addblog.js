@@ -1,9 +1,11 @@
-layui.use(['element','jquery','layer'], function(element,$){
+layui.use(['element','jquery','layer','form','laydate'], function(element,$,layer,form,laydate){
 	var element = layui.element,
 		layer = layui.layer,
+		form = layui.form,
+		laydate = layui.laydate,
 
 
-	testEditor = editormd("test-editormd", {
+		testEditor = editormd("test-editormd", {
 		width: "100%",
 		height: window.$(window).height() - 130,
 		path : '../public/libs/lib/',
@@ -47,7 +49,22 @@ layui.use(['element','jquery','layer'], function(element,$){
 		//dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为#fff
 		imageUpload : true,
 		imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-	});
+	}),
+
+
+		page = {
+			init:function () {
+				laydate.render({
+					elem: '#addDate' //指定元素
+				});
+			}
+		}
+
+
+
+		page.init()
+
+
 
 
 
