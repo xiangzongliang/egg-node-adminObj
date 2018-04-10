@@ -40,8 +40,8 @@ module.exports = appInfo => {
 		client: {
 			host: 'localhost',
 			port: '3306',
-			user: 'root',
-			password: 'root',
+			user: 'xiangzongliang',
+			password: 'xiang0612liang327411',
 			database: 'iantoo',
 		},
 		app: true,  // 是否加载到 app 上，默认开启
