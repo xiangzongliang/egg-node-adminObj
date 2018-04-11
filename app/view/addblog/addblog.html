@@ -13,9 +13,8 @@
 <link rel="stylesheet" href="/public/libs/css/editormd.min.css"/>
 <div class="layui-body">
     <div id="test-editormd"></div>
-
-
 </div>
+<script src="/public/js/qiniu.min.js"></script>
 <script src="/public/js/addblog.js"></script>
 {% endblock %}
 
@@ -28,27 +27,31 @@
         <div class="layui-col-md5">
             <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
         </div>
-        <div class="layui-col-md1">
-            <select name="city" lay-verify="required">
-                <option value="">选择分类</option>
-                <option value="0">北京</option>
-                <option value="1">上海</option>
-                <option value="2">广州</option>
-                <option value="3">深圳</option>
-                <option value="4">杭州</option>
-            </select>
-
-        </div>
         <div class="layui-col-md2">
             <input type="text" class="layui-input" id="addDate" placeholder="选择时间">
-
         </div>
 
-        <div class="layui-col-md2 layui-col-md-offset2">
-            <button class="layui-btn  layui-btn-sm layui-btn-radius">发表文章</button>
-            <button class="layui-btn  layui-btn-sm layui-btn-radius">保存到草稿箱</button>
+        <div class="layui-col-md3 layui-col-md-offset2">
+            <button class="layui-btn layui-btn-danger editClass">选择分类</button>
+            <button class="layui-btn blogPush">发表文章</button>
+            <button class="layui-btn layui-btn-primary blogSaveDraft">保存到草稿箱</button>
         </div>
     </div>
 </div>
+
+
+
+<div class="classPopup" style="display: none">
+    <div class="layui-form iantoo-page" >
+        <div class="layui-form-item">
+
+            {% for f in classList %}
+            <input type="checkbox" name="{{ f.Ename }}" title="{{ f.Cname }}" lay-skin="primary" lay-filter="popClasscheckbox">
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}
