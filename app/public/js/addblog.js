@@ -27,7 +27,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 						"bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
 						"h1", "h2", "h3", "h4", "h5", "h6", "|",
 						"list-ul", "list-ol", "hr", "|",
-						"link", "reference-link", "imageUpdata", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "pagebreak", "|",
+						"link", "reference-link", "imageUpdata", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "|",
 						"undo", "redo", "|",
 						"bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
 						"h1", "h2", "h3", "h4", "h5", "h6", "|",
@@ -169,7 +169,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			
 			//七牛的海报上传
 			AddPosterImg:function () {
-				var popHtml = '<a id="container"><button class="layui-btn layui-btn-danger" id="selectPosterImage">选择海报图片</button></a><hr class="layui-bg-gray">'
+				var popHtml = '<a id="container"><input type="file" placeholder="选择图片" class="layui-btn layui-btn-danger" id="selectPosterImage"/></a><hr class="layui-bg-gray">'
 				popHtml += '<blockquote class="layui-elem-quote layui-quote-nm upimageList"></blockquote>'
 
 
@@ -182,79 +182,11 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					area: ['550px', '520px'],
 					shadeClose: true,
 					success: function () {
-						blogPosterQiniu = qiniu.upload({
-							runtimes: 'html5,flash,html4',    //上传模式,依次退化
-							browse_button: 'selectPosterImage',       //上传选择的点选按钮，**必需**
-							uptoken_url: '/getPosterToken',            //Ajax请求upToken的Url，**强烈建议设置**（服务端提供）
-		//	                uptoken : token, //若未指定uptoken_url,则必须指定 uptoken ,uptoken由其他程序生成
-							unique_names: true, // 默认 false，key为文件名。若开启该选项，SDK为自动生成上传成功后的key（文件名）。
-							save_key: true,   // 默认 false。若在服务端生成uptoken的上传策略中指定了 `sava_key`，则开启，SDK会忽略对key的处理
-							domain: 'http://oyf8tmfgb.bkt.clouddn.com/',   //bucket 域名，下载资源时用到，**必需**
-							get_new_uptoken: false,  //设置上传文件的时候是否每次都重新获取新的token
-							container: 'container',           //上传区域DOM ID，默认是browser_button的父元素，
-							max_file_size: '100mb',           //最大文件体积限制
-							flash_swf_url: './js/plupload/Moxie.swf',  //引入flash,相对路径
-							max_retries: 3,                   //上传失败最大重试次数
-							dragdrop: true,                   //开启可拖曳上传
-							drop_element: 'container',        //拖曳上传区域元素的ID，拖曳文件或文件夹后可触发上传
-							chunk_size: '4mb',                //分块上传时，每片的体积
-							auto_start: false,                 //选择文件后自动上传，若关闭需要自己绑定事件触发上传
-							init: {
-								'FilesAdded': function (up, files) {
-									plupload.each(files, function (file) {
-										$('#blogPoster .upimageList').append('<p>' + file.name + '</p>')
-									})
-									// 文件添加进队列后,处理相sssss
-								},
-								'BeforeUpload': function (up, file) {
-									// 每个文件上传前,处理相关的事情
-									layer.load(2);
-								},
-								'UploadProgress': function (up, file) {
-
-									// 每个文件上传时,处理相关的事情
-//	                           console.log(up, file)
-//	                           var uploading = window.setInterval(function(){
-//	                           	console.log(up, file)
-//	                           }, 1000);
-//	                           	clearInterval(iID);
-
-								},
-								'FileUploaded': function (up, file, info) {
-									layer.closeAll('loading');
-									// 每个文件上传成功后,处理相关的事情
-									// 其中 info.response 是文件上传成功后，服务端返回的json，形式如
-									// {
-									//    "hash": "Fh8xVqod2MQ1mocfI4S4KpRL6D98",
-									//    "key": "gogopher.jpg"
-									//  }
-									// 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-									var domain = up.getOption('domain');
-									var res = $.parseJSON(info.response);
-									var sourceLink = domain + res.key; //获取上传成功后的文的件Url
-									$('#blogPoster .upimageList').append('<p>' + sourceLink + '</p>');
-									blogPosterUrl = sourceLink;
-
-
-								},
-								'Error': function (up, err, errTip) {
-									//上传出错时,处理相关的事情
-									console.log(up, err, errTip)
-								},
-								'UploadComplete': function () {
-									//队列文件处理完毕后,处理相关的事情
-									layer.msg('上传成功');
-								},
-								'Key': function (up, file) {
-									// 若想在前端对每个文件的key进行个性化处理，可以配置该函数
-									// 该配置必须要在 unique_names: false , save_key: false 时才生效
-
-									var key = "";
-									// do something with key here
-									return key
-								}
-							}
-						});
+						$('#blogPoster #selectPosterImage').change(function (data) {
+							console.log(data)
+						})
+						// var file,key,token,putExtra,config;
+						// blogPosterQiniu = qiniu.upload(file, key, token, putExtra, config);
 
 					},
 					yes: function (index, layero) {
