@@ -23,7 +23,7 @@ module.exports = app => {
 
 
 	//获取七牛云token
-	router.get('/qiniuToken', controller.qiniu.getToken);
+	router.post('/getPosterToken', controller.qiniu.getPosterToken); //上传海报的token
 
 
 };
