@@ -271,7 +271,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					content:testEditor.getHTML(),
 					markDown:testEditor.getMarkdown(),
 					blogPoster:posterUrl,
-					Draft:opction =='push' ? 'y' : 'n'
+					Draft:opction =='push' ? 'n' : 'y'
 				}
 				if(postData.title == ''){
 					layer.msg('文章标题不能为空')

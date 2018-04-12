@@ -22,6 +22,11 @@ module.exports = app => {
 	router.get('/addblog', controller.addblog.init);
 	router.post('/addblog', controller.addblog.addBlogCtl);
 
+	//博客管理
+	router.get('/blogManagement', controller.blogManagement.init);
+	router.post('/blogList', controller.blogManagement.blogListCtl);
+
+
 
 	//获取七牛云token
 	router.post('/getPosterToken', controller.qiniu.getPosterToken); //上传海报的token
