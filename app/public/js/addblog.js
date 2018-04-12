@@ -13,7 +13,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			//theme : "dark",
 			//previewTheme : "dark",
 			//editorTheme : "pastel-on-dark",
-			markdown : '[TOC]',
+			markdown : '',  //  默认插入的mk信息
 			codeFold : true,
 			//syncScrolling : false,
 			saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea
@@ -69,15 +69,17 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			toolbarHandlers: {
 				// 点击图片按钮启动图片上传功能
 				imageUpdata: function (e) {
-					page.imageUploaing();
+					page.uploadingImage('addImage');
 				},
 				AddPoster: function (e) {
-					page.AddPosterImg()
+					page.uploadingImage('addPoster')
 				}
 			}
 
 		}),
-		classList = [],
+		classList = [], //文章分类所选择的的数组
+		posterUrl = '', //文章海报的url
+
 
 
 		page = {
@@ -99,12 +101,12 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 
 				//点击发布文章
 				$('.blogPush').click(function () {
-
+					page.saveBlog('push')
 				})
 
 				//点击发布到草稿箱
 				$('.blogSaveDraft').click(function () {
-
+					page.saveBlog('saveDraft')
 				})
 
 
@@ -159,45 +161,140 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			},
 			
 			
-			
-			
-			// 七牛的图片上传
-			imageUploaing:function () {
-				
-			},
-			
-			
-			//七牛的海报上传
-			AddPosterImg:function () {
-				var popHtml = '<a id="container"><input type="file" placeholder="选择图片" class="layui-btn layui-btn-danger" id="selectPosterImage"/></a><hr class="layui-bg-gray">'
-				popHtml += '<blockquote class="layui-elem-quote layui-quote-nm upimageList"></blockquote>'
 
+			
+			
+			//七牛的上传
+			uploadingImage:function (opction) {
+				var popHtml = '<a id="container"><input type="file" placeholder="选择图片" class="layui-input" id="selectPosterImage"/></a><hr class="layui-bg-gray">'
+				popHtml+='<div class="layui-progress  layui-progress-big" lay-showPercent="yes" lay-filter="imageUpload"><div class="layui-progress-bar layui-bg-red" lay-percent="0%"></div></div>'
 
-				var blogPosterQiniu;
 				layer.open({
 					id: 'blogPoster',
 					content: popHtml,
 					title: '选择博客海报',
 					btn: ['开始上传', '取消'],
-					area: ['550px', '520px'],
+					area: ['550px', '300px'],
 					shadeClose: true,
 					success: function () {
-						$('#blogPoster #selectPosterImage').change(function (data) {
-							console.log(data)
-						})
-						// var file,key,token,putExtra,config;
-						// blogPosterQiniu = qiniu.upload(file, key, token, putExtra, config);
 
 					},
 					yes: function (index, layero) {
-						blogPosterQiniu.start();
+						page.PostImage({
+							type:opction,
+							index:index
+						});
 					}
 				})
+			},
+			
+			
+			
+			
+			
+			//上传图片
+			PostImage:function (opction) {
+				var url = '';
+				if(opction.type == 'addPoster'){
+					url = '/getPosterToken';
+				}else if(opction.type == 'addImage'){
+					url = '/getImageToken';
+				}
+
+
+
+				//获取token
+				$.ajax({
+					url:url,
+					type:'POST',
+					headers: {
+						'x-csrf-token':iantoo.getCookie()
+					},
+					success:function (token) {
+						var inputFile = document.getElementById('selectPosterImage');
+						var file = inputFile.files[0];
+						var data = new Date();
+						var key = data.getTime() + file.name; //上传之后的文件名称
+						var config = {
+							useCdnDomain: true, //表示是否使用 cdn 加速域名，为布尔值，true 表示使用，默认为 false
+							region: qiniu.region.z0, //华东//选择上传域名区域；当为 null 或 undefined 时，自动分析上传域名区域
+						};
+						var putExtra = {
+							fname: file.name, //文件原文件名
+							params: {}, //用来放置自定义变量
+							mimeType: null, //用来限制上传文件类型，为 null 时表示不对文件类型限制；限制类型放到数组里： ["image/png", "image/jpeg", "image/gif"]
+						};
+
+
+						// 上传过程中的回调
+						var observer = {
+							//接收上传进度信息
+							next:function(response){
+								let total = response.total;
+								console.log("进度：" + total.percent + "% ")
+								element.progress('imageUpload', total.percent+'%');
+							},
+							//上传错误后触发
+							error:function(err){
+								console.log(err)
+								layer.msg('上传失败')
+							},
+							//接收上传完成后的后端返回信息
+							complete:function(res){
+								layer.close(opction.index);
+								//如果上传的是海报
+								if(opction.type == 'addPoster'){
+									posterUrl = token.domain + res.key
+								}else if(opction.type == 'addImage'){ //如果上传的是图片则插入到文档中
+									testEditor.insertValue("![haha]("+ token.domain + res.key +")");
+								}
+								layer.msg('上传成功')
+								console.log(posterUrl)
+							}
+						}
+
+
+						var blogPosterQiniu = qiniu.upload(file, key, token.uptoken, putExtra, config);
+						var subscription = blogPosterQiniu.subscribe(observer) // 开始上传
+					}
+				})
+			},
+
+
+
+			//发表/存为草稿--文章
+			saveBlog:function (opction) {
+				var postData = {
+					title:$('.blogTitle').val(),
+					blogLable:JSON.stringify(classList),
+					date:$('.blogAddDate').val(),
+					content:testEditor.getHTML(),
+					markDown:testEditor.getMarkdown(),
+					blogPoster:posterUrl,
+					Draft:opction =='push' ? 'y' : 'n'
+				}
+				if(postData.title == ''){
+					layer.msg('文章标题不能为空')
+					return;
+				}else if(classList.length == 0){
+					layer.msg('请选择文章的分类')
+					return;
+				}
+
+				$.ajax({
+					url:'/addblog',
+					type:'POST',
+					headers: {
+						'x-csrf-token':iantoo.getCookie()
+					},
+					data:postData,
+					dataType:'json',
+					success:function (data) {
+						layer.msg(data.msg);
+					}
+				})
+
 			}
-
-
-
-			//发表文章
 
 
 		}

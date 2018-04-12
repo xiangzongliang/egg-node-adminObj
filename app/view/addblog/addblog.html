@@ -14,7 +14,7 @@
 <div class="layui-body">
     <div id="test-editormd"></div>
 </div>
-<script src="https://unpkg.com/qiniu-js@2.2.2/dist/qiniu.min.js"></script>
+<script src="/public/js/qiniu.min.js"></script>
 <script src="/public/js/addblog.js"></script>
 {% endblock %}
 
@@ -25,10 +25,10 @@
 <div class="layui-footer" style="padding: 10px;z-index: 9999999">
     <div class="layui-row layui-form" >
         <div class="layui-col-md5">
-            <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input blogTitle">
         </div>
         <div class="layui-col-md2">
-            <input type="text" class="layui-input" id="addDate" placeholder="选择时间">
+            <input type="text" class="layui-input blogAddDate" id="addDate" placeholder="选择时间">
         </div>
 
         <div class="layui-col-md3 layui-col-md-offset2">
