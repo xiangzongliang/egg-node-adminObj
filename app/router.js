@@ -20,7 +20,7 @@ module.exports = app => {
 
 	// 添加博客
 	router.get('/addblog', controller.addblog.init);
-	router.post('/addblog', controller.addblog.addBlog);
+	router.post('/addblog', controller.addblog.addBlogCtl);
 
 
 	//获取七牛云token

@@ -13,7 +13,7 @@ class addblog extends Controller {
 
 
 	//新增博客文章
-	async addBlog(){
+	async addBlogCtl(){
 		let postData = this.ctx.request.body,
 			getDate;
 		//处理时间
