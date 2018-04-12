@@ -7,7 +7,7 @@ class blog extends Service {
 			blogLable:opction.blogLable,
 			title:opction.title,
 			date:opction.date,
-			editdate:'',
+			editdate:0,
 			content:opction.content,
 			entype:'',
 			navParentEn:'',

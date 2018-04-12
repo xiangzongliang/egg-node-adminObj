@@ -23,7 +23,7 @@ class addblog extends Controller {
 			getDate = new Date(postData.date)
 		}
 		postData.date = getDate.getTime();
-		var queryAddblog = await this.ctx.service.blog.addblogServer(postData);
+		let queryAddblog = await this.ctx.service.blog.addblogServer(postData);
 		if(queryAddblog){
 			this.ctx.body = {
 				status:true,
