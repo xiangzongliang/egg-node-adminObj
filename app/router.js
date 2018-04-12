@@ -24,7 +24,7 @@ module.exports = app => {
 
 	//博客管理
 	router.get('/blogManagement', controller.blogManagement.init);
-	router.post('/blogList', controller.blogManagement.blogListCtl);
+	router.post('/queryblogList', controller.blogManagement.blogListCtl);
 
 
 
