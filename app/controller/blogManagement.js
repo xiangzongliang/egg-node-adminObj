@@ -17,7 +17,8 @@ class blogManagement extends Controller {
 
 		let opction = {
 				offset:(queryBody.page - 1) * 10,
-				limit:queryBody.limit
+				limit:queryBody.limit,
+				drafts:false
 			}
 
 
@@ -69,6 +70,27 @@ class blogManagement extends Controller {
 			count:queryblogList.tatol //博客总条数
 		};
 
+	}
+
+
+
+
+	// 删除博客
+	async deleteBlog(){
+		let delBid = this.ctx.request.body;
+		let Delblog = await this.ctx.service.blog.deleteBlogServer(delBid.bid);
+
+		if(Delblog){
+			this.ctx.body = {
+				status:true,
+				msg:'删除成功'
+			};
+		}else{
+			this.ctx.body = {
+				status:false,
+				msg:'删除失败'
+			};
+		}
 	}
 
 }

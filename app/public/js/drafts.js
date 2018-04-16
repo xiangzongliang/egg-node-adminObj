@@ -2,7 +2,6 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 	var element = layui.element,
 		layer = layui.layer,
 		form = layui.form,
-		$ = window.$,
 		table = layui.table,
 
 
@@ -14,7 +13,7 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 					elem: '#blogListTable',
 					headers:{'x-csrf-token':iantoo.getCookie()},
 					method:'POST',
-					url: '/queryblogList', //数据接口
+					url: '/queryDraftsList', //数据接口
 					page: true, //开启分页
 					cols: [[ //表头
 						{field: 'bid', title: 'ID', width:80, sort: true, fixed: 'left'},
@@ -25,7 +24,7 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 						{fixed: 'right',title: '操作', width:178, align:'center', toolbar: '#barDemo'}
 					]]
 				});
-				return this;
+				page.listenFun()
 			},
 			listenFun:function () {
 				table.on('tool(blogList)', function(obj){
@@ -33,30 +32,36 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 					if(obj.event === 'del'){
 						layer.confirm('确定要删除文章《' + data.title + '》吗？', function(index){
 							layer.close(index);
-							$.ajax({
-								url:'/deleteBlog',
-								type:'POST',
-								headers: {
-									'x-csrf-token':iantoo.getCookie()
-								},
-								data:{'bid':data.bid},
-								dataType:'json',
-								success:function (data) {
-									layer.msg(data.msg);
-									page.init().listenFun()
-								}
-							})
+							page.deleteBlog(data)
 						});
 					} else if(obj.event === 'edit'){
 						window.location.href = '/editBlog?bid='+data.bid;
 					}
 				});
+			},
+
+
+
+			deleteBlog:function(data){
+				$.ajax({
+					url:'/deleteBlog',
+					type:'POST',
+					headers: {
+						'x-csrf-token':iantoo.getCookie()
+					},
+					data:{'bid':data.bid},
+					dataType:'json',
+					success:function (data) {
+						layer.msg(data.msg);
+						page.init()
+					}
+				})
 			}
 		}
 
 
 
-	page.init().listenFun()
+	page.init()
 
 });
 

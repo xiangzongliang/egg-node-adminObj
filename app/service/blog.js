@@ -34,12 +34,21 @@ class blog extends Service {
 		// 	limit: parseInt(opction.limit), // 返回数据量
 		// 	offset:parseInt(opction.offset), // 数据偏移量
 		// });
+		let querySQL,Draft;
+
+		//如果查询草稿箱
+		if(opction.drafts == true){
+			Draft = 'y'
+		}else{
+			Draft = 'n'
+		}
 
 
-		let querySQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow
-FROM (SELECT bid,title,date,flow FROM iantoo_blog WHERE Draft='n' ORDER BY bid DESC LIMIT ${parseInt(opction.offset)},${parseInt(opction.limit)}) AS blog 
+		querySQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow
+FROM (SELECT bid,title,date,flow FROM iantoo_blog WHERE Draft='${Draft}' ORDER BY bid DESC LIMIT ${parseInt(opction.offset)},${parseInt(opction.limit)}) AS blog 
 LEFT JOIN (SELECT COUNT(bid) AS discuss,bid FROM iantoo_comment GROUP BY bid) AS com 
 ON blog.bid=com.bid`
+
 
 		let SQLqueryBlog = await this.app.mysql.query(querySQL);
 
@@ -48,7 +57,7 @@ ON blog.bid=com.bid`
 
 		let SQLtotal = await this.app.mysql.select('iantoo_blog',{
 			where: {
-				Draft: 'n'
+				Draft: Draft
 			},
 			columns: ['bid'], // 要查询的表字段
 		});
@@ -92,6 +101,18 @@ ON blog.bid=com.bid`
 		});
 
 		return upDataBlogSQL;
+	}
+
+
+
+
+
+	//删除某一篇文章
+	async deleteBlogServer(Dbid){
+		let deleteBlog = await this.app.mysql.delete('iantoo_blog', {
+			bid: Dbid,
+		});
+		return deleteBlog;
 	}
 
 

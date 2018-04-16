@@ -25,11 +25,18 @@ module.exports = app => {
 	//博客管理
 	router.get('/blogManagement', controller.blogManagement.init);
 	router.post('/queryblogList', controller.blogManagement.blogListCtl);
+	router.post('/deleteBlog', controller.blogManagement.deleteBlog);
+
 
 	// 编辑博客
 	router.get('/editBlog', controller.editBlog.init);
 	router.post('/queryBlog', controller.editBlog.queryBlog);
 	router.post('/updataBlog', controller.editBlog.updataBlog);
+
+
+	//草稿箱
+	router.get('/drafts', controller.drafts.init);
+	router.post('/queryDraftsList', controller.drafts.blogListCtl);
 
 
 
