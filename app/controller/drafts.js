@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class HomeController extends Controller {
+class draftsCTL extends Controller {
 
 	//进去首页
 	async init() {
@@ -71,4 +71,4 @@ class HomeController extends Controller {
 }
 
 
-module.exports = HomeController;
+module.exports = draftsCTL;

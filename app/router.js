@@ -45,4 +45,9 @@ module.exports = app => {
 	router.post('/getImageToken', controller.qiniu.getImageToken); //上传图片的token
 
 
+
+	//分类模块
+	router.get('/classFTN', controller.classFTN.init);
+
+
 };
