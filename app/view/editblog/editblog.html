@@ -1,0 +1,56 @@
+{% extends "../header/header.html" %}
+
+
+<!--title-->
+{% block title %}{{ title }}{% endblock %}
+
+
+
+<!--内容区域-->
+{% block content %}
+<script src="/public/libs/js/jquery.min.js"></script>
+<script src="/public/libs/editormd.min.js"></script>
+<link rel="stylesheet" href="/public/libs/css/editormd.min.css"/>
+<div class="layui-body">
+    <div id="test-editormd"></div>
+</div>
+<script src="/public/js/qiniu.min.js"></script>
+<script src="/public/js/editBlog.js"></script>
+{% endblock %}
+
+
+<!--底部模块-->
+{% block footer %}
+<div class="layui-footer" style="padding: 10px;z-index: 9999999">
+    <div class="layui-row layui-form" >
+        <div class="layui-col-md5">
+            <input type="text" name="title" required  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input blogTitle">
+        </div>
+        <div class="layui-col-md2">
+            <input type="text" class="layui-input blogAddDate" id="addDate" placeholder="选择时间">
+        </div>
+
+        <div class="layui-col-md3 layui-col-md-offset2">
+            <button class="layui-btn layui-btn-danger editClass">选择分类</button>
+            <button class="layui-btn blogPush">发表文章</button>
+            <button class="layui-btn layui-btn-primary blogSaveDraft">保存到草稿箱</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="classPopup" style="display: none">
+    <div class="layui-form iantoo-page" >
+        <div class="layui-form-item">
+
+            {% for f in classList %}
+            <input type="checkbox" name="{{ f.Ename }}" title="{{ f.Cname }}" lay-skin="primary" lay-filter="popClasscheckbox">
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

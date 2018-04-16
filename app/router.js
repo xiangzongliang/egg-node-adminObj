@@ -26,6 +26,11 @@ module.exports = app => {
 	router.get('/blogManagement', controller.blogManagement.init);
 	router.post('/queryblogList', controller.blogManagement.blogListCtl);
 
+	// 编辑博客
+	router.get('/editBlog', controller.editBlog.init);
+	router.post('/queryBlog', controller.editBlog.queryBlog);
+	router.post('/updataBlog', controller.editBlog.updataBlog);
+
 
 
 	//获取七牛云token

@@ -5,10 +5,12 @@ class blog extends Service {
 
 	//添加博客文章
 	async addblogServer(opction) {
+
+		let addBlogDate = new Date(opction.date)
 		let SQLaddBlog = await this.app.mysql.insert('iantoo_blog', {
 			blogLable:opction.blogLable,
 			title:opction.title,
-			date:opction.date,
+			date:parseInt(addBlogDate.getTime() / 1000),
 			editdate:0,
 			content:opction.content,
 			entype:'',
@@ -53,6 +55,43 @@ ON blog.bid=com.bid`
 
 		let tatol = SQLtotal.length
 		return { SQLqueryBlog , tatol };
+	}
+
+
+
+
+	//查询单独的某一篇文章
+	async queryBlogInfo(bid){
+		let queryblogContentSQL = await this.app.mysql.get('iantoo_blog', { bid: bid });
+		return queryblogContentSQL;
+	}
+
+
+
+
+	//更新某一篇文章
+
+	async upDataBlogInfo(blogContent){
+		let thisDate = new Date();
+		let updataDate = new Date(blogContent.date)
+		let upDataBlogSQL = await this.app.mysql.update('iantoo_blog', {
+			blogLable:blogContent.blogLable,
+			title:blogContent.title,
+			date:parseInt(updataDate.getTime() / 1000),
+			editdate:parseInt(thisDate.getTime() / 1000),
+			content:blogContent.content,
+			entype:'',
+			navParentEn:'',
+			Draft:blogContent.Draft,
+			markDown:blogContent.markDown,
+			blogPoster:blogContent.blogPoster
+		},{
+			where: {
+				bid: blogContent.bid
+			}
+		});
+
+		return upDataBlogSQL;
 	}
 
 

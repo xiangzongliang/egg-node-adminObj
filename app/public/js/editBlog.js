@@ -23,17 +23,17 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			//toolbar  : false,             //关闭工具栏
 			toolbarIcons : function() {
 				return [
-						"undo", "redo", "|",
-						"bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
-						"h1", "h2", "h3", "h4", "h5", "h6", "|",
-						"list-ul", "list-ol", "hr", "|",
-						"link", "reference-link", "imageUpdata", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "|",
-						"undo", "redo", "|",
-						"bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
-						"h1", "h2", "h3", "h4", "h5", "h6", "|",
-						"list-ul", "list-ol", "hr", "|",
-						"goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
-						"help", "info","|","pagebreak", "AddPoster"
+					"undo", "redo", "|",
+					"bold", "del", "italic", "quote", "ucwords", "uppercase", "lowercase", "|",
+					"h1", "h2", "h3", "h4", "h5", "h6", "|",
+					"list-ul", "list-ol", "hr", "|",
+					"link", "reference-link", "imageUpdata", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "|",
+					"undo", "redo", "|",
+					"bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
+					"h1", "h2", "h3", "h4", "h5", "h6", "|",
+					"list-ul", "list-ol", "hr", "|",
+					"goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
+					"help", "info","|","pagebreak", "AddPoster"
 				]
 			},
 			//previewCodeHighlight : false, // 关闭预览 HTML 的代码块高亮，默认开启
@@ -89,8 +89,54 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					elem: '#addDate', //指定元素
 					format:'yyyy-MM-dd HH:mm:ss'
 				});
+				var getBid = iantoo.getBid().bid
+				$.ajax({
+					url:'/queryBlog',
+					type:'POST',
+					headers: {
+						'x-csrf-token':iantoo.getCookie()
+					},
+					data:{
+						'bid' : getBid
+					},
+					dataType:'json',
+					success:function (data) {
+						var blogcontent = data.msg;
+						if(data.status == true){
+							posterUrl = blogcontent.blogPoster
+							classList = JSON.parse(blogcontent.blogLable);
+							setTimeout(function () {
+								testEditor.insertValue(blogcontent.markDown);
+							},1000)
+							$('.blogTitle').val(blogcontent.title)
+							$('.blogAddDate').val(page.dateVS(blogcontent.date))
+						}
+					}
+				})
+
+
+
+
 				return this;
 			},
+
+			dateVS:function (timeStamp) {
+					var date = new Date();
+					date.setTime(timeStamp * 1000);
+					var y = date.getFullYear();
+					var m = date.getMonth() + 1;
+					m = m < 10 ? ('0' + m) : m;
+					var d = date.getDate();
+					d = d < 10 ? ('0' + d) : d;
+					var h = date.getHours();
+					h = h < 10 ? ('0' + h) : h;
+					var minute = date.getMinutes();
+					var second = date.getSeconds();
+					minute = minute < 10 ? ('0' + minute) : minute;
+					second = second < 10 ? ('0' + second) : second;
+					return y + '-' + m + '-' + d+' '+h+':'+minute+':'+second;
+			},
+
 			listenFun:function () {
 
 				//点击选择分类
@@ -159,11 +205,11 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					}
 				});
 			},
-			
-			
 
-			
-			
+
+
+
+
 			//七牛的上传
 			uploadingImage:function (opction) {
 				var popHtml = '<a id="container"><input type="file" placeholder="选择图片" class="layui-input" id="selectPosterImage"/></a><hr class="layui-bg-gray">'
@@ -187,11 +233,11 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					}
 				})
 			},
-			
-			
-			
-			
-			
+
+
+
+
+
 			//上传图片
 			PostImage:function (opction) {
 				var url = '';
@@ -265,13 +311,14 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 			//发表/存为草稿--文章
 			saveBlog:function (opction) {
 				var postData = {
-					title:$('.blogTitle').val(),
-					blogLable:JSON.stringify(classList),
-					date:$('.blogAddDate').val(),
-					content:testEditor.getHTML(),
-					markDown:testEditor.getMarkdown(),
-					blogPoster:posterUrl,
-					Draft:opction =='push' ? 'n' : 'y'
+					'title':$('.blogTitle').val(),
+					'blogLable':JSON.stringify(classList),
+					'date':$('.blogAddDate').val(),
+					'content':testEditor.getHTML(),
+					'markDown':testEditor.getMarkdown(),
+					'blogPoster':posterUrl,
+					'Draft':opction =='push' ? 'n' : 'y',
+					'bid':iantoo.getBid().bid
 				}
 				if(postData.title == ''){
 					layer.msg('文章标题不能为空')
@@ -282,7 +329,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 				}
 
 				$.ajax({
-					url:'/addblog',
+					url:'/updataBlog',
 					type:'POST',
 					headers: {
 						'x-csrf-token':iantoo.getCookie()
@@ -304,7 +351,7 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 
 
 
-		page.init().listenFun()
+	page.init().listenFun()
 
 });
 

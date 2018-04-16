@@ -26,12 +26,24 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 					]]
 				});
 				return this;
+			},
+			listenFun:function () {
+				table.on('tool(blogList)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'del'){
+						layer.confirm('确定要删除文章《' + data.title + '》吗？', function(index){
+							layer.close(index);
+						});
+					} else if(obj.event === 'edit'){
+						window.location.href = '/editBlog?bid='+data.bid;
+					}
+				});
 			}
 		}
 
 
 
-	page.init()
+	page.init().listenFun()
 
 });
 
