@@ -20,8 +20,10 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 						{field:'sort',title:'排序'},
 						{field: 'Cname', title: '中文标签'},
 						{field: 'Ename', title: '英文标签'},
-						{field: 'parentEn', title: '父及',width:80},
-						// {field:'openNewPage', title:'新页面打开', width:85, templet: '#newpageOpen', unresize: true},
+						{field: 'parentEn', title: '父及'},
+						{field: 'openNewPage', title: '新页面打开'},
+						{field: 'openNewWindow', title: '新窗口打开'},
+						{fixed: 'right',title: '操作', width:178, align:'center', toolbar: '#barDemo'}
 					]]
 				});
 			},
