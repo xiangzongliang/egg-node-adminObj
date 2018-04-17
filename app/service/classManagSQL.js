@@ -6,6 +6,15 @@ class classmanag extends Service {
 		return SQLqueryClass;
 	}
 
+	async queryParentList(){
+		let SQLqueryClass = await this.app.mysql.select('iantoo_nav',{
+			where: {
+				parent: 1
+			},
+		});
+		return SQLqueryClass;
+	}
+
 
 
 }

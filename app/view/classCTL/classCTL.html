@@ -26,7 +26,7 @@
 
 
 <div class="classPopup" style="display: none;padding: 20px">
-    <div class="layui-form">
+    <div class="layui-form" lay-filter="test2">
         <div class="layui-form-item">
             <input type="text" placeholder="中文名称"  class="layui-input Cname">
         </div>
@@ -34,23 +34,26 @@
             <input type="text" placeholder="英文名称"  class="layui-input Ename">
         </div>
         <div class="layui-form-item">
-            <input type="number" placeholder="排序"  class="layui-input Ename">
+            <input type="number" placeholder="排序"  class="layui-input sort">
         </div>
         <div class="layui-form-item">
             <select class="parentName">
-
+                <option value="">未选择</option>
+                {% for item in parentList %}
+                    <option value="{{ item.Ename }}">{{ item.Cname }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="layui-form-item">
-            <input type="checkbox" name="switch" lay-skin="switch" lay-text="显示|影藏">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="显示|影藏" class="showAndHiden">
             <div class="layui-form-mid layui-word-aux">显示|隐藏</div>
         </div>
         <div class="layui-form-item">
-            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否" class="openNewPage">
             <div class="layui-form-mid layui-word-aux">新页面打开</div>
         </div>
         <div class="layui-form-item">
-            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否" class="openNewWindow">
             <div class="layui-form-mid layui-word-aux">新窗口打开</div>
         </div>
     </div>

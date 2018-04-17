@@ -56,21 +56,35 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 			
 			
 			classPopup:function (opction) {
+				var title;
 				if(opction){  //编辑
-					console.log('bianji')
+					title = '编辑分类'
 				}else{  //新增
-					console.log('xinzeng')
+					title = '新增分类'
 				}
 
 				layer.open({
 					type:1,
 					id:'classPopup',
-					title:'新增模块',
+					title:title,
 					content: $('.classPopup'),
 					area:['450px','600px'],
 					btn:['保存','取消'],
 					btnAlign:'c',
 					success:function () {
+						var classPopup = $('#classPopup')
+						console.log(opction);
+						if(opction){
+							classPopup.find('.Cname').val(opction.Cname)
+							classPopup.find('.Ename').val(opction.Ename)
+							classPopup.find('.sort').val(opction.sort)
+							classPopup.find(".parentName option[value='"+opction.parentEn+"']").attr("selected","selected");
+
+							opction.display == 'y' ? classPopup.find('.showAndHiden').attr("checked",true):classPopup.find('.showAndHiden').attr("checked",false)
+							opction.openNewPage == 'y' ? classPopup.find('.openNewPage').attr("checked",true) : classPopup.find('.openNewPage').attr("checked",false);
+							opction.openNewWindow == 'y' ? classPopup.find('.openNewWindow').attr("checked",true) : classPopup.find('.openNewWindow').attr("checked",false);
+							form.render();
+						}
 
 					},
 					yes:function () {

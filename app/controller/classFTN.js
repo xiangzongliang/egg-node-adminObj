@@ -9,9 +9,11 @@ class classCTL extends Controller {
 		// await this.ctx.render('drafts/drafts.html',{
 		// 	title:'草稿箱'
 		// });
+		let parentList = await this.ctx.service.classManagSQL.queryParentList();
 
 		await this.ctx.render('classCTL/classCTL.html',{
 			title:'分类管理',
+			parentList:parentList
 		});
 	}
 
