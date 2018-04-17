@@ -17,16 +17,68 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 					//page: true, //开启分页
 					cols: [[ //表头
 						{field: 'nid', title: 'ID', width:80, sort: true, fixed: 'left'},
-						{field:'sort',title:'排序'},
+						{field:'sort',title:'排序',sort: true},
 						{field: 'Cname', title: '中文标签'},
 						{field: 'Ename', title: '英文标签'},
+						{field: 'display', title: '显示'},
 						{field: 'parentEn', title: '父及'},
 						{field: 'openNewPage', title: '新页面打开'},
 						{field: 'openNewWindow', title: '新窗口打开'},
 						{fixed: 'right',title: '操作', width:178, align:'center', toolbar: '#barDemo'}
 					]]
 				});
+
+				page.listenFun()
 			},
+			listenFun:function () {
+				//监听工具条
+				table.on('tool(classList)', function(obj){
+					var data = obj.data;
+					if(obj.event === 'del'){
+						layer.confirm('真的删除行么', function(index){
+							obj.del();
+							layer.close(index);
+						});
+					} else if(obj.event === 'edit'){
+						page.classPopup(data)
+					}
+				});
+
+
+
+				//点击添加按钮
+				$('.addclass').click(function () {
+					page.classPopup()
+				})
+			},
+			
+			
+			
+			
+			classPopup:function (opction) {
+				if(opction){  //编辑
+					console.log('bianji')
+				}else{  //新增
+					console.log('xinzeng')
+				}
+
+				layer.open({
+					type:1,
+					id:'classPopup',
+					title:'新增模块',
+					content: $('.classPopup'),
+					area:['450px','600px'],
+					btn:['保存','取消'],
+					btnAlign:'c',
+					success:function () {
+
+					},
+					yes:function () {
+						
+					}
+
+				});
+			}
 
 
 

@@ -11,6 +11,7 @@
 
 <div class="layui-body">
     <div class="iantoo-page">
+        <button class="layui-btn addclass"><i class="layui-icon">&#xe654;</i>添加分类</button>
         <table id="classListTable" lay-filter="classList" >
         </table>
     </div>
@@ -20,6 +21,40 @@
     <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
     <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
+
+
+
+
+<div class="classPopup" style="display: none;padding: 20px">
+    <div class="layui-form">
+        <div class="layui-form-item">
+            <input type="text" placeholder="中文名称"  class="layui-input Cname">
+        </div>
+        <div class="layui-form-item">
+            <input type="text" placeholder="英文名称"  class="layui-input Ename">
+        </div>
+        <div class="layui-form-item">
+            <input type="number" placeholder="排序"  class="layui-input Ename">
+        </div>
+        <div class="layui-form-item">
+            <select class="parentName">
+
+            </select>
+        </div>
+        <div class="layui-form-item">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="显示|影藏">
+            <div class="layui-form-mid layui-word-aux">显示|隐藏</div>
+        </div>
+        <div class="layui-form-item">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否">
+            <div class="layui-form-mid layui-word-aux">新页面打开</div>
+        </div>
+        <div class="layui-form-item">
+            <input type="checkbox" name="switch" lay-skin="switch" lay-text="是|否">
+            <div class="layui-form-mid layui-word-aux">新窗口打开</div>
+        </div>
+    </div>
+</div>
 
 
 <script src="/public/js/classPage.js"></script>
