@@ -73,25 +73,72 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 					btnAlign:'c',
 					success:function () {
 						var classPopup = $('#classPopup')
-						console.log(opction);
 						if(opction){
 							classPopup.find('.Cname').val(opction.Cname)
 							classPopup.find('.Ename').val(opction.Ename)
 							classPopup.find('.sort').val(opction.sort)
 							classPopup.find(".parentName option[value='"+opction.parentEn+"']").attr("selected","selected");
-
-							opction.display == 'y' ? classPopup.find('.showAndHiden').attr("checked",true):classPopup.find('.showAndHiden').attr("checked",false)
-							opction.openNewPage == 'y' ? classPopup.find('.openNewPage').attr("checked",true) : classPopup.find('.openNewPage').attr("checked",false);
-							opction.openNewWindow == 'y' ? classPopup.find('.openNewWindow').attr("checked",true) : classPopup.find('.openNewWindow').attr("checked",false);
-							form.render();
+							opction.display == 'y' ? classPopup.find('.showAndHiden').prop("checked",true) : classPopup.find('.showAndHiden').prop("checked",false)
+							opction.openNewPage == 'y' ? classPopup.find('.openNewPage').prop("checked",true) : classPopup.find('.openNewPage').prop("checked",false);
+							opction.openNewWindow == 'y' ? classPopup.find('.openNewWindow').prop("checked",true) : classPopup.find('.openNewWindow').prop("checked",false);
+						}else{
+							classPopup.find('.Cname').val('')
+							classPopup.find('.Ename').val('')
+							classPopup.find('.sort').val('')
+							classPopup.find(".parentName").val('');
+							classPopup.find('.showAndHiden').prop("checked",true)
+							classPopup.find('.openNewPage').prop("checked",false);
+							classPopup.find('.openNewWindow').prop("checked",false);
 						}
+						form.render();
 
 					},
-					yes:function () {
-						
+					yes:function (index, layero) {
+						var classPopup = $('#classPopup')
+						var postData = {
+							Cname:classPopup.find('.Cname').val(),
+							Ename:classPopup.find('.Ename').val(),
+							sort:classPopup.find('.sort').val(),
+							parentName:classPopup.find(".parentName").val(),
+							showAndHiden:classPopup.find('.showAndHiden').prop("checked") == true ? 'y' : 'n',
+							openNewPage:classPopup.find('.openNewPage').prop("checked") == true ? 'y' : 'n',
+							openNewWindow:classPopup.find('.openNewWindow').prop("checked") == true ? 'y' : 'n'
+						};
+						if(opction){
+							postData.status = 'edit';
+							postData.nid = opction.nid;
+						}else{
+							postData.status = 'add';
+						}
+						page.saveClassList(postData,index)
+
 					}
 
 				});
+			},
+
+
+
+
+
+
+			//保存分类
+			saveClassList:function (opction,index) {
+				$.ajax({
+					url:'/editOrAddClass',
+					type:'POST',
+					headers: {
+						'x-csrf-token':iantoo.getCookie()
+					},
+					data:opction,
+					dataType:'json',
+					success:function (data) {
+						layer.close(index)
+						layer.msg(data.msg);
+						page.init()
+					}
+				})
+
 			}
 
 

@@ -49,6 +49,7 @@ module.exports = app => {
 	//分类模块
 	router.get('/classFTN', controller.classFTN.init);
 	router.post('/classFTN', controller.classFTN.queryClassList);
+	router.post('/editOrAddClass', controller.classFTN.editOrAddClass);
 
 
 };
