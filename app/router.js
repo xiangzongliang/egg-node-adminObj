@@ -52,4 +52,10 @@ module.exports = app => {
 	router.post('/editOrAddClass', controller.classFTN.editOrAddClass);
 
 
+
+	// 评论管理模块
+	router.get('/comment',controller.comment.init)
+	router.post('/commentList',controller.comment.getCommentList)
+
+
 };
