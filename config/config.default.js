@@ -71,6 +71,16 @@ module.exports = appInfo => {
 
 
 
+
+	//安全策略模块配置
+	config.security = {
+		csrf: {
+			enable: false, //禁用部分安全策略功能
+		}
+	};
+
+
+
 	return config;
 };
 
