@@ -39,12 +39,13 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 
 
 					commentDOM += '<div class="layui-colla-item">\n' +
-						'                <h2 class="layui-colla-title">'+ +'</h2>\n' +
+						'                <h2 class="layui-colla-title"><a class="C_appellation">'+ commentList[cl].appellation+'</a>在<time class="C_adddate">'+commentList[cl].adddate+'</time></h2>\n' +
 						'                <div class="layui-colla-content">内容区域</div>\n' +
 						'            </div>'
 				}
 
 				$('.commont').html(commentDOM)
+				element.init();
 			}
 		}
 
