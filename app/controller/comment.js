@@ -14,8 +14,9 @@ class comment extends Controller {
 
 
 	async getCommentList(){
-		let queryBody = this.ctx.request.body;
-		let queryCommentList = await this.ctx.service.comment.queryCommentList(queryBody);
+		let queryBody = this.ctx.request.body,
+			queryCommentListRAW = await this.ctx.service.comment.queryCommentList(queryBody);
+		let queryCommentList = queryCommentListRAW.commentList
 
 
 
@@ -90,30 +91,10 @@ class comment extends Controller {
 		}
 
 
-
-
-
-
-
-
-
-
-		//
-		// for(let cl in commentList){
-		// 	replyList = [];
-		// 	for(let rcl in replyCommentList){
-		// 		if(replyCommentList[rcl].pid == commentList[cl].pid ){
-		// 			replyList.push(replyCommentList[rcl])
-		// 		}
-		// 	}
-		// 	commentList[cl].reply = replyList;
-		// 	callbackList.push(commentList[cl])
-		//
-		// }
 		this.ctx.body = {
 			status:true,
 			msg:postMSG,
-			'RAW':queryCommentList
+			total:queryCommentListRAW.total
 		};
 
 	}

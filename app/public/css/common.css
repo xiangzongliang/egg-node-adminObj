@@ -1,9 +1,31 @@
 .iantoo-page{
     padding: 20px;
 }
-.C_appellation{
+.C_appellation,.C_title{
     color: #5FB878;
 }
 .C_adddate{
     color: #c4c4c4;
+}
+.user_reply_info{
+    padding-top: 10px;
+}
+.user_reply_info a{
+    color: #00aaaa;
+    margin-right: 10px;
+}
+.user_reply_info time{
+    margin-left: 5px;
+    font-size: 12px;
+    color: #c4c4c4;
+}
+.operating{
+    padding-top: 5px;
+    border-top: 1px solid #ececec;
+    margin-top: 15px;
+    color: #c4c4c4;
+    cursor: pointer;
+}
+.operating i{
+    margin-right: 20px;
 }
