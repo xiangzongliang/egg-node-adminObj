@@ -12,7 +12,7 @@ class comment extends Controller {
 	}
 
 
-
+	//获取评论列表
 	async getCommentList(){
 		let queryBody = this.ctx.request.body,
 			queryCommentListRAW = await this.ctx.service.comment.queryCommentList(queryBody);
@@ -48,7 +48,7 @@ class comment extends Controller {
 
 			for(let pi in postMSG){
 				if(postMSG[pi].id == queryCommentList[ri].pid){
-					replyData.push({
+					postMSG[pi].reply.push({
 						'CPcontent':queryCommentList[ri].CPcontent,
 						'RepliedName':queryCommentList[ri].RepliedName,
 						'ReplyName':queryCommentList[ri].ReplyName,
@@ -60,6 +60,9 @@ class comment extends Controller {
 					status = true;
 				}
 			}
+
+
+
 			if(status === false){
 				if(queryCommentList[ri].cpid){
 					replyData.push({
@@ -72,21 +75,24 @@ class comment extends Controller {
 						'pid':queryCommentList[ri].pid,
 					})
 				}
+				postMSG.push({
+					'adddate':fmtDate(queryCommentList[ri].adddate),
+					'appellation':queryCommentList[ri].appellation,
+					'bid':queryCommentList[ri].bid,
+					'title':queryCommentList[ri].title,
+					'content':queryCommentList[ri].content,
+					'id':queryCommentList[ri].pid,
+					'reply':replyData
+				})
+				replyData = []
 			}else{
+
 				continue forqcl;
 			}
 
 
-			postMSG.push({
-				'adddate':fmtDate(queryCommentList[ri].adddate),
-				'appellation':queryCommentList[ri].appellation,
-				'bid':queryCommentList[ri].bid,
-				'title':queryCommentList[ri].title,
-				'content':queryCommentList[ri].content,
-				'id':queryCommentList[ri].pid,
-				'reply':replyData
-			})
-			replyData = []
+
+
 
 		}
 
@@ -99,6 +105,43 @@ class comment extends Controller {
 
 	}
 
+
+
+	//添加回复
+	async commentReply(){
+		let replyData = this.ctx.request.body,
+			addReply = await this.ctx.service.comment.addReply(replyData);
+		if(addReply){
+			this.ctx.body = {
+				status: true,
+				msg: '回复成功'
+			};
+		}else{
+			this.ctx.body = {
+				status: true,
+				msg: '回复失败'
+			};
+		}
+	}
+
+
+
+	// 删除评论--影藏
+	async delcommentReply(){
+		let delComment = this.ctx.request.body,
+			delReply = await this.ctx.service.comment.delReply(delComment);
+		if(delReply){
+			this.ctx.body = {
+				status: true,
+				msg: '删除成功'
+			};
+		}else{
+			this.ctx.body = {
+				status: true,
+				msg: '删除失败'
+			};
+		}
+	}
 }
 
 

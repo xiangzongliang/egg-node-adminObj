@@ -29,3 +29,7 @@
 .operating i{
     margin-right: 20px;
 }
+.replyComtent{
+    min-height: 250px !important;
+    max-height: 400px;
+}

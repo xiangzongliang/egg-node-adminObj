@@ -56,6 +56,8 @@ module.exports = app => {
 	// 评论管理模块
 	router.get('/comment',controller.comment.init)
 	router.post('/commentList',controller.comment.getCommentList)
+	router.post('/commentReply',controller.comment.commentReply)
+	router.post('/delcommentReply',controller.comment.delcommentReply)
 
 
 };
