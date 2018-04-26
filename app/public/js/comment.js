@@ -132,6 +132,10 @@ layui.use(['element','jquery','layer','laypage'], function(element,$,layer,form,
 								dataType:'json',
 								success:function (data) {
 									layer.msg(data.msg);
+									page.init({
+										pageIndex:1,
+										pageSize:10
+									})
 									layer.close(index); //如果设定了yes回调，需进行手工关闭
 								}
 							})
@@ -160,6 +164,10 @@ layui.use(['element','jquery','layer','laypage'], function(element,$,layer,form,
 						dataType:'json',
 						success:function (data) {
 							layer.msg(data.msg);
+							page.init({
+								pageIndex:1,
+								pageSize:10
+							})
 							layer.close(index); //如果设定了yes回调，需进行手工关闭
 						}
 					})
