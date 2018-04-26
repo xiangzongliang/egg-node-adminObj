@@ -13,11 +13,11 @@ class comment extends Service {
 		});
 		let	total = totalList.length;
 		let querySQL = `SELECT * FROM 
-            (SELECT bid,pid,appellation,content,adddate,url FROM iantoo_comment  WHERE display='y' ORDER BY pid DESC LIMIT ${pageIndex},${pagesize}) AS comment 
+            (SELECT bid,pid,appellation,content,adddate,url FROM iantoo_comment  WHERE display='y' ORDER BY pid DESC LIMIT ${pageIndex},${pagesize} ) AS comment 
             LEFT JOIN
             (SELECT bid,title FROM iantoo_blog) AS blog ON comment.bid = blog.bid
             LEFT JOIN 
-            (SELECT cpid,pid AS pidR,bid AS bidR,CPcontent,addTime AS addTimeR,ReplyName,RepliedName FROM iantoo_commentreply) AS comrly ON comment.pid = comrly.pidR`
+            (SELECT cpid,pid AS pidR,bid AS bidR,CPcontent,addTime AS addTimeR,ReplyName,RepliedName FROM iantoo_commentreply) AS comrly ON comment.pid = comrly.pidR ORDER BY comment.pid DESC`
 		let commentList = await this.app.mysql.query(querySQL);
 
 		return { commentList,total };
