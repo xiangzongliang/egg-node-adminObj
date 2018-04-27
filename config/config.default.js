@@ -25,7 +25,7 @@ module.exports = appInfo => {
 	config.cluster = {
 		listen: {
 			//path: '',
-			port:8000,
+			port:80,
 			//hostname: '',
 		},
 	};
@@ -40,8 +40,8 @@ module.exports = appInfo => {
 		client: {
 			host: 'localhost',
 			port: '3306',
-			user: 'xiangzongliang',
-			password: 'xiang0612liang327411',
+			user: 'root',
+			password: 'root',
 			database: 'iantoo',
 		},
 		app: true,  // 是否加载到 app 上，默认开启
@@ -78,6 +78,16 @@ module.exports = appInfo => {
 			enable: false, //禁用部分安全策略功能
 		},
 		domainWhiteList: [ 'http://photo.xiangzongliang.com/' ], //允许访问这个源上的文件,白名单
+	};
+
+
+
+
+
+	config.bodyParser = {
+		enable: true,
+		formLimit: '4096kb',
+		jsonLimit: '1024kb',
 	};
 
 
