@@ -9,7 +9,7 @@ module.exports = appInfo => {
 	config.keys = appInfo.name + '_1522852050569_3131';
 
 	// add your config here
-	config.middleware = ['islogin'];
+	config.middleware = [];
 
 
 

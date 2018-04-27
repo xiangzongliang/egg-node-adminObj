@@ -268,7 +268,8 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					title:$('.blogTitle').val(),
 					blogLable:JSON.stringify(classList),
 					date:$('.blogAddDate').val(),
-					content:testEditor.getHTML(),
+					content:testEditor.getPreviewedHTML(),
+					OTCcontent:testEditor.getHTML(),
 					markDown:testEditor.getMarkdown(),
 					blogPoster:posterUrl,
 					Draft:opction =='push' ? 'n' : 'y'

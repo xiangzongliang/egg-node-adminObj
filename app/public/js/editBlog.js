@@ -314,12 +314,16 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					'title':$('.blogTitle').val(),
 					'blogLable':JSON.stringify(classList),
 					'date':$('.blogAddDate').val(),
-					'content':testEditor.getHTML(),
+					'content':testEditor.getPreviewedHTML(),
+					'OTCcontent':testEditor.getHTML(),
 					'markDown':testEditor.getMarkdown(),
 					'blogPoster':posterUrl,
 					'Draft':opction =='push' ? 'n' : 'y',
 					'bid':iantoo.getBid().bid
 				}
+
+
+				console.log(postData)
 				if(postData.title == ''){
 					layer.msg('文章标题不能为空')
 					return;
