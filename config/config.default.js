@@ -76,7 +76,8 @@ module.exports = appInfo => {
 	config.security = {
 		csrf: {
 			enable: false, //禁用部分安全策略功能
-		}
+		},
+		domainWhiteList: [ 'http://photo.xiangzongliang.com/' ], //允许访问这个源上的文件,白名单
 	};
 
 
