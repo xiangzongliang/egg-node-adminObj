@@ -166,6 +166,34 @@ class webpagesql extends Controller {
 		}
 	}
 
+
+
+
+	//添加评论
+	async Addcomment(){
+		let commentData = this.ctx.request.body;
+		if(!commentData.bid){
+			this.ctx.body = {
+				status: false,
+				msg: 'this not or bid'
+			}
+			return;
+		}
+		let addblogComment = await this.ctx.service.webServersql.addblogComment(commentData)
+		if(addblogComment){
+			this.ctx.body = {
+				status: true,
+				msg: '评论成功'
+			}
+		}else{
+			this.ctx.body = {
+				status: false,
+				msg: '评论失败'
+			}
+		}
+
+	}
+
 }
 
 

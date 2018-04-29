@@ -73,6 +73,9 @@ module.exports = app => {
 	router.post('/iantooData/getMusicList/',controller.webPage.getMusicList)
 	router.post('/iantooData/blogList/',controller.webPage.blogList)
 	router.post('/iantooData/blogContent/',controller.webPage.blogContent)
+	router.post('/iantooData/Addcomment/',controller.webPage.Addcomment)
+
+
 
 
 
