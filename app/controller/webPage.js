@@ -94,7 +94,7 @@ class webpagesql extends Controller {
 	//博客列表
 	async blogList(){
 		let pageInfo = this.ctx.request.body;
-		let blogListServerSQL = await this.ctx.service.webServersql.blogListServer(pageInfo),
+		let blogListServerSQL = await this.ctx.service.webServersql.queryblogListServer(pageInfo),
 			blogListServer = blogListServerSQL.queryblogList, //博客的列表
 			total = blogListServerSQL.blogtotale.length,    //博客的总数
 			blogList = [],

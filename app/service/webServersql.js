@@ -7,7 +7,8 @@ class webser extends Service {
 			columns: ['bid', 'title','date'], // 要查询的表字段
 			orders: [['bid','desc']], // 排序方式
 			where: {
-				views: 'y'
+				views: 'y',
+				Draft:"n"
 			}
 			//limit: 10, // 返回数据量
 			//offset: 0, // 数据偏移量
@@ -28,11 +29,12 @@ class webser extends Service {
 
 
 	//查询博客列表
-	async blogListServer(pageInfo){
+	async queryblogListServer(pageInfo){
 		let pageindex = (pageInfo.index - 1)*10
 		let queryblogList = await this.app.mysql.select('iantoo_blog',{
 			where:{
-				views: 'y'
+				views:"y",
+				Draft:"n"
 			},
 			columns: ['bid', 'title','date','blogPoster','OTCcontent','blogLable','flow'], // 要查询的表字段
 			orders: [['bid','desc']], // 排序方式
@@ -42,7 +44,8 @@ class webser extends Service {
 
 		let blogtotale = await this.app.mysql.select('iantoo_blog',{
 			where:{
-				views: 'y'
+				views: 'y',
+				Draft:"n"
 			},
 			columns: ['bid'] // 要查询的表字段
 		});

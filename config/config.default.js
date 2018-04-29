@@ -25,7 +25,7 @@ module.exports = appInfo => {
 	config.cluster = {
 		listen: {
 			//path: '',
-			port:80,
+			port:8000,
 			//hostname: '',
 		},
 	};
@@ -41,7 +41,7 @@ module.exports = appInfo => {
 			host: 'localhost',
 			port: '3306',
 			user: 'root',
-			password: 'root',
+			password: '123456',
 			database: 'iantoo',
 		},
 		app: true,  // 是否加载到 app 上，默认开启
