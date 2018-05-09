@@ -33,3 +33,7 @@
     min-height: 250px !important;
     max-height: 400px;
 }
+
+#popupMusicBox input{
+    margin-bottom: 10px;
+}

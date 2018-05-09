@@ -64,6 +64,33 @@ class qiniuController extends Controller {
 		}
 	}
 
+
+
+	async getMusicToken(){
+		const queryUser = await this.ctx.service.qiniuSQL.queryQiniuinfo();
+		let configJson = {
+			"AccessKey": queryUser[0].qiniuAK,  // https://portal.qiniu.com/user/key
+			"SecretKey": queryUser[0].qiniuSK,
+			"Bucket": "video",
+			"Port": 9000,
+			"UptokenUrl": "uptoken",
+			"Domain": "http://7xjuq4.com1.z0.glb.clouddn.com/" // bucket domain eg:http://qiniu-plupload.qiniudn.com/
+		}
+		var mac = new qiniu.auth.digest.Mac(configJson.AccessKey, configJson.SecretKey);
+
+
+		let options = {
+			scope: configJson.Bucket
+		};
+
+		let	putPolicy = new qiniu.rs.PutPolicy(options);
+		let token = putPolicy.uploadToken(mac);
+		this.ctx.body = {
+			uptoken: token,
+			domain: configJson.Domain
+		}
+	}
+
 }
 
 module.exports = qiniuController;

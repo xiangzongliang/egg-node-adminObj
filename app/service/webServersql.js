@@ -21,7 +21,9 @@ class webser extends Service {
 
 	//查询音乐播放列表
 	async queryMusic(){
-		let querymusicList = await this.app.mysql.select('iantoo_backgroundmusic');
+		let querymusicList = await this.app.mysql.select('iantoo_backgroundmusic',{
+			orders: [['muid','desc']], // 排序方式
+		});
 		return querymusicList;
 	}
 

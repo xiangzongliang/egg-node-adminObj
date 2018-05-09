@@ -1,0 +1,42 @@
+{% extends "../header/header.html" %}
+
+
+<!--title-->
+{% block title %}{{ title }}{% endblock %}
+
+
+
+<!--内容区域-->
+{% block content %}
+<div class="layui-body">
+
+    <div class="iantoo-page">
+        <button class="layui-btn postMusicFile">上传音频文件</button>
+        <button class="layui-btn addbbMusic">添加背景音乐</button>
+        <table id="bgmusicList" lay-filter="filbgmusicList"></table>
+    </div>
+</div>
+
+
+<div class="addpopupBox" style="display: none">
+    <input type="text" placeholder="歌曲名称"  class="layui-input musongTitle">
+    <input type="text" placeholder="歌手"  class="layui-input muauthor">
+    <input type="text" placeholder="URL" class="layui-input musrc">
+</div>
+
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script src="/public/js/qiniu.min.js"></script>
+<script src="/public/js/bgmusic.js"></script>
+{% endblock %}
+
+
+
+<!--底部模块-->
+{% block footer %}
+
+
+{% endblock %}
