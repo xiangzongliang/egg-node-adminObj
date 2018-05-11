@@ -194,6 +194,18 @@ class webpagesql extends Controller {
 
 	}
 
+
+
+
+	// 获取导航列表
+	async getNavList(){
+		let querynavList = await this.ctx.service.webServersql.querynavList()
+		this.ctx.body = {
+			status: false,
+			msg: querynavList
+		}
+	}
+
 }
 
 

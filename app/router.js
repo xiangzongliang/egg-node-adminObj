@@ -65,6 +65,7 @@ module.exports = app => {
 	router.post('/iantooData/blogList/',controller.webPage.blogList)
 	router.post('/iantooData/blogContent/',controller.webPage.blogContent)
 	router.post('/iantooData/Addcomment/',controller.webPage.Addcomment)
+	router.post('/iantooData/getNavList/',controller.webPage.getNavList)
 
 
 

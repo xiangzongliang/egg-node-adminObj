@@ -33,22 +33,17 @@ class webser extends Service {
 	//查询博客列表
 	async queryblogListServer(pageInfo){
 		let pageindex = (pageInfo.index - 1)*10
-
-		let queryBlogListSQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow,blog.OTCcontent,blog.blogLable,blog.blogPoster
-								FROM (SELECT bid,title,date,flow,OTCcontent,blogLable,blogPoster FROM iantoo_blog WHERE Draft='n' AND views='y' ORDER BY bid DESC LIMIT 10 OFFSET ${pageindex}) AS blog 
+		var queryBlogListSQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow,blog.OTCcontent,blog.blogLable,blog.blogPoster
+								FROM (SELECT bid,title,date,flow,OTCcontent,blogLable,blogPoster FROM iantoo_blog WHERE title LIKE '%${pageInfo.title}%' AND blogLable LIKE '%${pageInfo.type}%' AND Draft='n' AND views='y' ORDER BY bid DESC LIMIT 10 OFFSET ${pageindex}) AS blog 
 								LEFT JOIN (SELECT COUNT(bid) AS discuss,bid FROM iantoo_comment GROUP BY bid) AS com 
 								ON blog.bid=com.bid`
+		var blogtotale = await this.app.mysql.query(`SELECT bid FROM iantoo_blog WHERE title LIKE '%${pageInfo.title}%' AND blogLable LIKE '%${pageInfo.type}%' AND views='y' AND Draft='n'`);
 
+		//查询博客列表的信息
 		let queryblogList = await this.app.mysql.query(queryBlogListSQL);
 
+		//查询博客列表的总数据
 
-		let blogtotale = await this.app.mysql.select('iantoo_blog',{
-			where:{
-				views: 'y',
-				Draft:"n"
-			},
-			columns: ['bid'] // 要查询的表字段
-		});
 		return { queryblogList,blogtotale };
 	}
 
@@ -128,6 +123,20 @@ class webser extends Service {
 			isQQuser:data.islogin == '' ? 'no' : 'yes'
 		});
 		return addComment;
+	}
+
+
+
+	//查询NAV列表
+	async querynavList(){
+		let querynavListSQL = await this.app.mysql.select('iantoo_nav',{
+			where:{
+				display: 'y'
+			},
+			orders: [['sort','asc']], // 排序方式
+			columns: ['Cname', 'Ename','nid'],
+		});
+		return querynavListSQL
 	}
 }
 
