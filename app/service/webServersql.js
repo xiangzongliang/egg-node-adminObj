@@ -33,16 +33,14 @@ class webser extends Service {
 	//查询博客列表
 	async queryblogListServer(pageInfo){
 		let pageindex = (pageInfo.index - 1)*10
-		let queryblogList = await this.app.mysql.select('iantoo_blog',{
-			where:{
-				views:"y",
-				Draft:"n"
-			},
-			columns: ['bid', 'title','date','blogPoster','OTCcontent','blogLable','flow'], // 要查询的表字段
-			orders: [['bid','desc']], // 排序方式
-			limit: 10, // 返回数据量
-			offset: pageindex, // 数据偏移量
-		});
+
+		let queryBlogListSQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow,blog.OTCcontent,blog.blogLable,blog.blogPoster
+								FROM (SELECT bid,title,date,flow,OTCcontent,blogLable,blogPoster FROM iantoo_blog WHERE Draft='n' AND views='y' ORDER BY bid DESC LIMIT 10 OFFSET ${pageindex}) AS blog 
+								LEFT JOIN (SELECT COUNT(bid) AS discuss,bid FROM iantoo_comment GROUP BY bid) AS com 
+								ON blog.bid=com.bid`
+
+		let queryblogList = await this.app.mysql.query(queryBlogListSQL);
+
 
 		let blogtotale = await this.app.mysql.select('iantoo_blog',{
 			where:{

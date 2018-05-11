@@ -98,7 +98,7 @@ class webpagesql extends Controller {
 			blogListServer = blogListServerSQL.queryblogList, //博客的列表
 			total = blogListServerSQL.blogtotale.length,    //博客的总数
 			blogList = [],
-			contentFun = (content) =>{
+			contentFun = (content) =>{//正则过滤分页符和去掉html标签
 				if(content){
 					let RDOM = content.split(`<hr style="page-break-after:always;" class="page-break editormd-page-break" />`)
 					let returnDOM = RDOM[0].replace(/<[^>]+>|\[TOC]/g,"");
@@ -116,7 +116,7 @@ class webpagesql extends Controller {
 				id:blogListServer[bi].bid,
 				blogPoster:blogListServer[bi].blogPoster,
 				content:domContent,
-				discuss:0,
+				discuss:blogListServer[bi].discuss,
 				flow:blogListServer[bi].flow,
 				labelist:JSON.parse(blogListServer[bi].blogLable),
 				startDate:blogListServer[bi].date,
