@@ -28,10 +28,6 @@ layui.use(['element','jquery','layer','form','laydate'], function(element,$,laye
 					"h1", "h2", "h3", "h4", "h5", "h6", "|",
 					"list-ul", "list-ol", "hr", "|",
 					"link", "reference-link", "imageUpdata", "code", "preformatted-text", "code-block", "table", "datetime", "emoji", "html-entities", "|",
-					"undo", "redo", "|",
-					"bold", "del", "italic", "quote", "uppercase", "lowercase", "|",
-					"h1", "h2", "h3", "h4", "h5", "h6", "|",
-					"list-ul", "list-ol", "hr", "|",
 					"goto-line", "watch", "preview", "fullscreen", "clear", "search", "|",
 					"help", "info","|","pagebreak", "AddPoster"
 				]
