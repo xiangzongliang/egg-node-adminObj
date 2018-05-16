@@ -2,7 +2,7 @@ layui.use(['element','jquery','layer','form','table'], function(element,$,layer,
 	var element = layui.element,
 		layer = layui.layer,
 		form = layui.form,
-		$ = window.$,
+		$ = layui.jquery,
 		table = layui.table,
 
 
