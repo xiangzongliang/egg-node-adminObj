@@ -4,7 +4,7 @@ const Controller = require('egg').Controller;
 
 class webpagesql extends Controller {
 
-	//进去首页
+	//归档列表
 	async QueryArchiving() {
 		let queryAhvServer = await this.ctx.service.webServersql.queryAhvServer();
 
@@ -18,8 +18,11 @@ class webpagesql extends Controller {
 				if(month<10){
 					month = '0'+month
 				}
+				if(date<10){
+					date = '0'+date
+				}
 				return {
-					getTime:year+''+month,
+					getTime:year+'-'+month,
 					getRAWtime:year+'-'+month+'-'+date
 				}
 			};

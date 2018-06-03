@@ -104,6 +104,18 @@ class webser extends Service {
 		})
 
 
+
+		//数据时间处理
+		for(let ci in blogComment){
+			blogComment[ci].adddate = fmtDate(blogComment[ci].adddate * 1000)
+		}
+		for(let ri in blogCommentReply){
+			blogCommentReply[ri].addTime = fmtDate(blogCommentReply[ri].addTime * 1000)
+		}
+
+
+
+
 		return { queryblogContentInfo,blogComment,blogCommentReply };
 	}
 
