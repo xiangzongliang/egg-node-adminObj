@@ -47,7 +47,7 @@ class blog extends Service {
 
 		querySQL = `SELECT blog.bid,ifnull(com.discuss,0) AS discuss,blog.title,blog.date,blog.flow
 FROM (SELECT bid,title,date,flow FROM iantoo_blog WHERE Draft='${Draft}' ORDER BY bid DESC LIMIT ${parseInt(opction.offset)},${parseInt(opction.limit)}) AS blog 
-LEFT JOIN (SELECT COUNT(bid) AS discuss,bid FROM iantoo_comment GROUP BY bid) AS com 
+LEFT JOIN (SELECT COUNT(bid) AS discuss,bid FROM iantoo_comment WHERE display='y' GROUP BY bid) AS com 
 ON blog.bid=com.bid`
 
 
