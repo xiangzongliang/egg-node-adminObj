@@ -6,7 +6,12 @@ class blog extends Service {
 	//添加博客文章
 	async addblogServer(opction) {
 
-		let addBlogDate = new Date(opction.date)
+		let addBlogDate = new Date(opction.date),
+			type = 'blog';
+		if(opction.blogLable.indexOf('tool') >= 0){
+			type = 'tool'
+		}
+
 		let SQLaddBlog = await this.app.mysql.insert('iantoo_blog', {
 			blogLable:opction.blogLable,
 			title:opction.title,
@@ -18,7 +23,8 @@ class blog extends Service {
 			navParentEn:'',
 			Draft:opction.Draft,
 			markDown:opction.markDown,
-			blogPoster:opction.blogPoster
+			blogPoster:opction.blogPoster,
+			type:type,
 		});
 		return SQLaddBlog;
 	}
@@ -82,8 +88,12 @@ ON blog.bid=com.bid`
 	//更新某一篇文章
 
 	async upDataBlogInfo(blogContent){
-		let thisDate = new Date();
-		let updataDate = new Date(blogContent.date)
+		let thisDate = new Date(),
+			updataDate = new Date(blogContent.date),
+			type = 'blog';
+		if(blogContent.blogLable.indexOf('tool') >= 0){
+			type = 'tool'
+		}
 		let upDataBlogSQL = await this.app.mysql.update('iantoo_blog', {
 			blogLable:blogContent.blogLable,
 			title:blogContent.title,
@@ -95,7 +105,8 @@ ON blog.bid=com.bid`
 			navParentEn:'',
 			Draft:blogContent.Draft,
 			markDown:blogContent.markDown,
-			blogPoster:blogContent.blogPoster
+			blogPoster:blogContent.blogPoster,
+			type:type,
 		},{
 			where: {
 				bid: blogContent.bid
