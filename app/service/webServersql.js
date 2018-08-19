@@ -153,6 +153,20 @@ class webser extends Service {
 	}
 
 
+
+	//邮件推送的时候查询博客信息并推送
+	async emailQueryBlogInfo(bid){
+		let emailQueryBlogInfoSQL = await this.app.mysql.select('iantoo_blog',{
+			where:{
+				bid: bid
+			},
+			//orders: [['sort','asc']], // 排序方式
+			columns: ['title'],
+		});
+		return emailQueryBlogInfoSQL
+	}
+
+
     timeConversion(timeStamp){
         var date = new Date();
         date.setTime(timeStamp * 1000);

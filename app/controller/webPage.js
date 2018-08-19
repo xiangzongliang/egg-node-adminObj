@@ -182,7 +182,65 @@ class webpagesql extends Controller {
 			}
 			return;
 		}
+
+
+		// bid: data.bid,
+		// 	content:data.content,
+		// 	adddate:timeC,
+		// 	appellation:data.username,
+		// 	url:data.userUrl,
+		// 	isQQuser:data.islogin == '' ? 'no' : 'yes'
+
+		//通过bid 获取博客的信息
+		let getBlogInfo = await this.ctx.service.webServersql.emailQueryBlogInfo(commentData.bid)
+		//添加用户评论
 		let addblogComment = await this.ctx.service.webServersql.addblogComment(commentData)
+
+		if(getBlogInfo){
+			//触发邮件推送
+			try{
+				const result = await this.ctx.curl('http://localhost/emailSend/', {
+					// 必须指定 method
+					method: 'POST',
+					// 通过 contentType 告诉 HttpClient 以 JSON 格式发送
+					contentType: '',
+					data: {
+						resMail:'826463893@qq.com',
+						sendTitle:`${commentData.username} 评论了文章 ${getBlogInfo[0].title}`,
+						sendContent:`<div style="width: 100%;position: relative;">
+						<a style="text-decoration: none;" href="http://www.xiangzongliang.com" target="_blank"><h2 style="text-align: center;padding-top: 20px;font-size: 22px;font-weight: 300;color: #35b9ed;">言图网</h2></a>
+						<img style="width: 100%;padding: 0px 30% 20px 30%;box-sizing: border-box;" src="http://poster.xiangzongliang.com/iantoologo.png">
+						<p style="color: #555;
+							font-size:14px;
+							font-weight: 400;
+							line-height: 1.2rem;padding: 15px 20px;border-bottom: 1px solid #c4c4c4;margin:0px; background: #ececec;border-radius: 5px 5px 0px 0px;">用户 <span style="color:#ff8800">${commentData.username}</span> 对文章 <a style="color:#ff8800;text-decoration: none;" href="http://www.xiangzongliang.com/blogContent?b=${commentData.bid}" target="_blank">${getBlogInfo[0].title}</a>写下了评论:</p>
+						<p style="color: #666;
+						font-size:14px;
+						font-weight: 300;
+						line-height: 2rem;padding: 5px 20px 15px 20px;margin:0px; background: #ececec;border-radius:0px 0px 5px 5px;">${commentData.content}</p>
+				
+						<p style="text-align: center; padding: 20px 20px; color: #c4c4c4; font-size: 12px;font-weight: 300;">
+							* 感谢您的评论 * <br/> - 祝您开心每一天 - <br/> 邮件内容为推送内容,请勿回复。
+						</p>
+						
+					</div>`,
+						tagName:'resEmail', //resEmail -> 有人评论 || sendEmail -> 作者回复
+					},
+					// 明确告诉 HttpClient 以 JSON 格式处理返回的响应 body
+					dataType: 'json',
+
+				});
+			}catch (err){
+				console.log(err)
+			}
+		}
+
+
+
+		
+
+
+		
 		if(addblogComment){
 			this.ctx.body = {
 				status: true,
@@ -194,7 +252,6 @@ class webpagesql extends Controller {
 				msg: '评论失败'
 			}
 		}
-
 	}
 
 
