@@ -44,7 +44,7 @@ class comment extends Service {
 
 
 
-
+	//删除评论
 	async delReply(opction){
 		let updateComment = await this.app.mysql.update('iantoo_comment', {
 			display:'n'
@@ -59,6 +59,21 @@ class comment extends Service {
 		}else{
 			return false
 		}
+	}
+
+
+
+
+	//通过pid获取评论者 的email
+	async getEmail(opction){
+		let getEmailSQL = await this.app.mysql.select('iantoo_comment',{
+			where:{
+				pid:opction
+			},
+			//orders: [['sort','asc']], // 排序方式
+			columns: ['url','appellation'],
+		});
+		return getEmailSQL
 	}
 
 
