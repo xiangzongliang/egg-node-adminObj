@@ -199,7 +199,7 @@ class webpagesql extends Controller {
 		if(getBlogInfo){
 			//触发邮件推送
 			try{
-				const result = await this.ctx.curl('http://localhost/emailSend/', {
+				const result = await this.ctx.curl('http://127.0.0.1:8090/emailSend/', {
 					// 必须指定 method
 					method: 'POST',
 					// 通过 contentType 告诉 HttpClient 以 JSON 格式发送
